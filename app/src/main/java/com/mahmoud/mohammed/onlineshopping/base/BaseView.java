@@ -7,7 +7,6 @@ package com.mahmoud.mohammed.onlineshopping.base;
 public interface BaseView {
     void showMessage(String message);
     void showLoadingDialog(String message);
-    void dismissLoadingDialog();
     void showErrMsg(String msg);
     void showNoInternetMsg();
 
