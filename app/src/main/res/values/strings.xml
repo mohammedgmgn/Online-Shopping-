@@ -15,6 +15,8 @@
     <string name="hint_password">Password</string>
     <string name="hint_name">Fullname</string>
     <string name="btn_login">LOGIN</string>
+    <string name="error_name_empty">please enter your name</string>
+
     <string name="btn_link_to_register">Not a member? Get registered now!</string>
     <string name="btn_link_to_login">Already registered. Login Me!</string>
     <string name="title_activity_reset_password">ResetPasswordActivity</string>
@@ -31,7 +33,15 @@
     <string name="enter_email">Please enter your email address</string>
     <string name="enter_your_password">Please enter your password</string>
     <string name="error_internet_message">Check Internet</string>
+    <string name="error_confirm_password">your tow password didn not matched</string>
+    <string name="error_birthdate_empty">please select your Birthdate</string>
 
     <string name="enter_valid_email">Please enter valid email address</string>
+    <string name="title_activity_home">HomeActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 </resources>

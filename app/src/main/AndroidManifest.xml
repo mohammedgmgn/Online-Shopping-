@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mahmoud.mohammed.onlineshopping">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,23 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".base.BaseActivity" />
-
-        <activity
-            android:name=".authnication.login.view.activties.LoginActivty">
-
+        <activity android:name=".authnication.login.view.activties.LoginActivty">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".authnication.register.SignUpActivity" />
-        <activity android:name=".authnication.login.view.activties.ForgotPasswordActivity"></activity>
+        <activity android:name=".authnication.register.views.activites.SignUpActivity" />
+        <activity android:name=".authnication.login.view.activties.ForgotPasswordActivity" />
+        <activity
+            android:name=".ui.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

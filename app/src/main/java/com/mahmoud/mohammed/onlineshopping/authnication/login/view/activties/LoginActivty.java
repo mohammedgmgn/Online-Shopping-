@@ -14,7 +14,7 @@ import com.mahmoud.mohammed.onlineshopping.authnication.login.component.LoginCom
 import com.mahmoud.mohammed.onlineshopping.authnication.login.modules.LoginModule;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.presenter.LoginPresnterImpl;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.view.interfaces.LoginView;
-import com.mahmoud.mohammed.onlineshopping.authnication.register.SignUpActivity;
+import com.mahmoud.mohammed.onlineshopping.authnication.register.views.activites.SignUpActivity;
 import com.mahmoud.mohammed.onlineshopping.base.BaseActivity;
 import com.mahmoud.mohammed.onlineshopping.utils.KeyboardUtil;
 
