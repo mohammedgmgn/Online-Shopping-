@@ -11,5 +11,10 @@ public class SessionHelper {
     public static FirebaseUser getUser(){
         return FirebaseAuth.getInstance().getCurrentUser();
     }
+    public static FirebaseAuth getFirebaseAuth(){
+        return FirebaseAuth.getInstance();
+
+    }
+
 
 }

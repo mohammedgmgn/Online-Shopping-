@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.mahmoud.mohammed.onlineshopping.R;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.component.DaggerLoginComponent;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.component.LoginComponent;
@@ -16,6 +17,8 @@ import com.mahmoud.mohammed.onlineshopping.authnication.login.presenter.LoginPre
 import com.mahmoud.mohammed.onlineshopping.authnication.login.view.interfaces.LoginView;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.views.activites.SignUpActivity;
 import com.mahmoud.mohammed.onlineshopping.base.BaseActivity;
+import com.mahmoud.mohammed.onlineshopping.communication.SessionHelper;
+import com.mahmoud.mohammed.onlineshopping.ui.home.HomeActivity;
 import com.mahmoud.mohammed.onlineshopping.utils.KeyboardUtil;
 
 import javax.inject.Inject;
@@ -45,6 +48,10 @@ public class LoginActivty extends BaseActivity implements LoginView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activty);
+        if (SessionHelper.getUser() != null) {
+            startActivity(new Intent(LoginActivty.this, HomeActivity.class));
+            finish();
+        }
         ButterKnife.bind(this);
         component = DaggerLoginComponent.builder().loginModule(new LoginModule(this))
                 .build();
@@ -126,7 +133,7 @@ public class LoginActivty extends BaseActivity implements LoginView {
 
     @Override
     public void navigateToHome() {
-
+startActivity(new Intent(LoginActivty.this, HomeActivity.class));
     }
 
     @Override

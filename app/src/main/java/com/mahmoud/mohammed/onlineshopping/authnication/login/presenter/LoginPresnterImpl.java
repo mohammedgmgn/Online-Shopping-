@@ -37,6 +37,7 @@ public class LoginPresnterImpl implements LoginPresenter, OnSuccessListener<Auth
     @Override
     public void onSuccess(AuthResult authResult) {
         view.hideProgress();
+        view.navigateToHome();
 
     }
 

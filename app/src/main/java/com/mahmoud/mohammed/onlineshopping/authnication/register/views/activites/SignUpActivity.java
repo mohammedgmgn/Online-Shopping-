@@ -11,14 +11,13 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.mahmoud.mohammed.onlineshopping.R;
-import com.mahmoud.mohammed.onlineshopping.authnication.login.view.activties.LoginActivty;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.component.DaggerSignUpComponent;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.component.SignUpComponent;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.modules.SignUpModule;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.presnter.SignUpPresnterImpl;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.views.interfaces.SignUpView;
 import com.mahmoud.mohammed.onlineshopping.base.BaseActivity;
-import com.mahmoud.mohammed.onlineshopping.ui.HomeActivity;
+import com.mahmoud.mohammed.onlineshopping.ui.home.HomeActivity;
 import com.mahmoud.mohammed.onlineshopping.utils.DialogHelper;
 import com.mahmoud.mohammed.onlineshopping.utils.KeyboardUtil;
 
@@ -88,6 +87,12 @@ public class SignUpActivity extends BaseActivity implements SignUpView {
                     KeyboardUtil.dismissKeyboard(SignUpActivity.this);
                     presnter.register();
                 }
+            }
+        });
+        signInBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
