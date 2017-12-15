@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.mahmoud.mohammed.onlineshopping.R;
+import com.mahmoud.mohammed.onlineshopping.authnication.forgotpassword.ResetPasswordActivity;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.component.DaggerLoginComponent;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.component.LoginComponent;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.modules.LoginModule;
@@ -18,7 +18,7 @@ import com.mahmoud.mohammed.onlineshopping.authnication.login.view.interfaces.Lo
 import com.mahmoud.mohammed.onlineshopping.authnication.register.views.activites.SignUpActivity;
 import com.mahmoud.mohammed.onlineshopping.base.BaseActivity;
 import com.mahmoud.mohammed.onlineshopping.communication.SessionHelper;
-import com.mahmoud.mohammed.onlineshopping.ui.home.HomeActivity;
+import com.mahmoud.mohammed.onlineshopping.ui.home.view.HomeActivity;
 import com.mahmoud.mohammed.onlineshopping.utils.KeyboardUtil;
 
 import javax.inject.Inject;
@@ -60,6 +60,9 @@ public class LoginActivty extends BaseActivity implements LoginView {
     }
 
     private void initUi() {
+        loginPresenter.setView(this);
+        inputEmail.setText("mohammed.95mahmoud@gmail.com");
+        inputPassword.setText("123456789");
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +79,12 @@ public class LoginActivty extends BaseActivity implements LoginView {
                 startActivity(new Intent(LoginActivty.this,SignUpActivity.class));
             }
         });
-
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivty.this, ResetPasswordActivity.class));
+            }
+        });
     }
 
     @Override
@@ -129,6 +137,11 @@ public class LoginActivty extends BaseActivity implements LoginView {
     public void onLoginFail(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void onLoginSuccess() {
+        finish();
     }
 
     @Override

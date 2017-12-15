@@ -17,7 +17,7 @@ import com.mahmoud.mohammed.onlineshopping.authnication.register.modules.SignUpM
 import com.mahmoud.mohammed.onlineshopping.authnication.register.presnter.SignUpPresnterImpl;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.views.interfaces.SignUpView;
 import com.mahmoud.mohammed.onlineshopping.base.BaseActivity;
-import com.mahmoud.mohammed.onlineshopping.ui.home.HomeActivity;
+import com.mahmoud.mohammed.onlineshopping.ui.home.view.HomeActivity;
 import com.mahmoud.mohammed.onlineshopping.utils.DialogHelper;
 import com.mahmoud.mohammed.onlineshopping.utils.KeyboardUtil;
 
@@ -72,6 +72,7 @@ public class SignUpActivity extends BaseActivity implements SignUpView {
     }
 
     private void initUi() {
+        presnter.setView(this);
         myCalendar = Calendar.getInstance();
         birthDayEd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,6 +159,21 @@ public class SignUpActivity extends BaseActivity implements SignUpView {
     @Override
     public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void showLoadingDialog(String message) {
+
+    }
+
+    @Override
+    public void showErrMsg(String msg) {
+
+    }
+
+    @Override
+    public void showNoInternetMsg() {
 
     }
 

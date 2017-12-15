@@ -1,5 +1,6 @@
 package com.mahmoud.mohammed.onlineshopping.authnication.login.presenter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -9,6 +10,7 @@ import com.mahmoud.mohammed.onlineshopping.R;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.backend.LoginFirebase;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.view.activties.LoginActivty;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.view.interfaces.LoginView;
+import com.mahmoud.mohammed.onlineshopping.base.BaseView;
 import com.mahmoud.mohammed.onlineshopping.utils.EmailValidator;
 
 import javax.inject.Inject;
@@ -19,12 +21,16 @@ import javax.inject.Inject;
 
 public class LoginPresnterImpl implements LoginPresenter, OnSuccessListener<AuthResult>, OnFailureListener {
     private LoginView view;
-    private LoginActivty mContext;
+    private Context mContext;
 
     @Inject
     public LoginPresnterImpl(LoginActivty loginActivity) {
         mContext = loginActivity;
-        setView(loginActivity);
+    }
+
+    @Override
+    public void setView(BaseView view) {
+        this.view = (LoginView) view;
     }
 
     @Override
@@ -38,13 +44,7 @@ public class LoginPresnterImpl implements LoginPresenter, OnSuccessListener<Auth
     public void onSuccess(AuthResult authResult) {
         view.hideProgress();
         view.navigateToHome();
-
-    }
-
-    @Override
-    public void setView(LoginActivty view) {
-        this.view = view;
-
+        view.onLoginSuccess();
     }
 
     @Override
@@ -75,5 +75,6 @@ public class LoginPresnterImpl implements LoginPresenter, OnSuccessListener<Auth
     private void userLogin(String email, String password) {
         LoginFirebase.login(email, password, this, this);
     }
+
 
 }

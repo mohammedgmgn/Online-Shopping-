@@ -29,6 +29,38 @@ public class FirebaseReader {
                     }
                 });
     }
+    public static void getSnapShot(final ValueCallback<DataSnapshot> callback,String ... params){
+        FireHelper.getRequiredPath(params).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                callback.onReceiveValue(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+
+    public static void getSnapShotSinglieListner(final ValueCallback<DataSnapshot> callback,String ... params){
+
+        FireHelper.getRequiredPath(params).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                callback.onReceiveValue(dataSnapshot);
+
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
     public static void getFireDataSingleObject(final Class<?> obClass,final ValueCallback<Object>callback,String ... params){
         FireHelper.getRequiredPath(params)
                 .addValueEventListener(new ValueEventListener() {
@@ -44,5 +76,7 @@ public class FirebaseReader {
                 });
 
     }
+
+
 
 }

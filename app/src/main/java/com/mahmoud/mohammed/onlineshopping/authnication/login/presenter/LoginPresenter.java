@@ -8,10 +8,9 @@ import com.mahmoud.mohammed.onlineshopping.base.BasePresenter;
  * Created by Mohamed on 11/20/2017.
  */
 
-public interface LoginPresenter {
+public interface LoginPresenter extends BasePresenter {
 
     boolean validateLoginFields();
     void login();
-    void setView(LoginActivty view);
 
 }

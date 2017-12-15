@@ -5,18 +5,41 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_categories"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Categories " />
+            android:id="@+id/nav_offers"
+            android:icon="@drawable/ic_local_offer_black_24dp"
+            android:title="Offers" />
+
         <item
-            android:id="@+id/nav_cart"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Shopping Cart" />
+            android:id="@+id/nav_electoronics"
+            android:icon="@drawable/ic_smartphone_black_24dp"
+            android:title="Electoronics " />
         <item
-            android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Profile" />
+            android:id="@+id/nav_life_style"
+            android:icon="@drawable/ic_wc_black_24dp"
+            android:title="LifeStyle" />
+
+        <item
+            android:id="@+id/nav_home_application"
+            android:icon="@drawable/ic_local_dining_black_24dp"
+            android:title="Home Applications" />
+        <item
+            android:id="@+id/nav_books"
+            android:icon="@drawable/ic_book_black_24dp"
+            android:title="Books" />
+
     </group>
+    <item android:title="MyProfile">
+        <menu>
+            <item
+                android:id="@+id/nav_my_orders"
+                android:icon="@drawable/ic_shopping_basket_black_24dp"
+                android:title="MyOrders" />
+            <item
+                android:id="@+id/nav_cart"
+                android:icon="@drawable/ic_shopping_cart_black_24dp"
+                android:title="MyCart" />
+        </menu>
+    </item>
 
     <item android:title="Communicate">
         <menu>

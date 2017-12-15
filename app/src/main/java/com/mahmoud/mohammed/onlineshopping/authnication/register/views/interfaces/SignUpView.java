@@ -1,12 +1,13 @@
 package com.mahmoud.mohammed.onlineshopping.authnication.register.views.interfaces;
 
+import com.mahmoud.mohammed.onlineshopping.base.BaseView;
 import com.mahmoud.mohammed.onlineshopping.models.User;
 
 /**
  * Created by mohammed on 28/11/2017.
  */
 
-public interface SignUpView {
+public interface SignUpView extends BaseView {
     void showProgress();
 
     void hideProgress();

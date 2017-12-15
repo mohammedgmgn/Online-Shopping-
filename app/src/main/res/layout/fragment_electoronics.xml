@@ -2,11 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.categories.tabs.elctoronics.ElectoronicsFragment">
+    tools:context=".ui.categories.products.elctoronics.ElectoronicsFragment">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/elec_recycler_view_id"
-        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"

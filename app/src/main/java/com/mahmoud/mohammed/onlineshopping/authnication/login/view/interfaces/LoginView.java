@@ -17,6 +17,7 @@ public interface LoginView extends BaseView {
     void setPasswordError(String errorMessage);
 
     void onLoginFail(String errorMessage);
+    void onLoginSuccess();
 
     void navigateToHome();
 

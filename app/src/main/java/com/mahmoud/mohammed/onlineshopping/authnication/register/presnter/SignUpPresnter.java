@@ -1,14 +1,14 @@
 package com.mahmoud.mohammed.onlineshopping.authnication.register.presnter;
 
 import com.mahmoud.mohammed.onlineshopping.authnication.register.views.activites.SignUpActivity;
+import com.mahmoud.mohammed.onlineshopping.base.BasePresenter;
 
 /**
  * Created by mohammed on 28/11/2017.
  */
 
-public interface SignUpPresnter {
+public interface SignUpPresnter extends BasePresenter {
     void register();
-    void setView(SignUpActivity view);
     boolean validateSignUpFields();
 
 }

@@ -1,5 +1,6 @@
 package com.mahmoud.mohammed.onlineshopping.authnication.register.presnter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -9,6 +10,7 @@ import com.mahmoud.mohammed.onlineshopping.R;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.backend.RegistrationFirebase;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.views.activites.SignUpActivity;
 import com.mahmoud.mohammed.onlineshopping.authnication.register.views.interfaces.SignUpView;
+import com.mahmoud.mohammed.onlineshopping.base.BaseView;
 import com.mahmoud.mohammed.onlineshopping.models.User;
 import com.mahmoud.mohammed.onlineshopping.utils.EmailValidator;
 
@@ -21,23 +23,22 @@ import javax.inject.Inject;
 public class SignUpPresnterImpl implements SignUpPresnter, OnSuccessListener<AuthResult>, OnFailureListener {
     private User user;
     private SignUpView view;
-    private SignUpActivity mContext;
+    private Context mContext;
 
     @Inject
     public SignUpPresnterImpl(SignUpActivity context) {
         mContext = context;
-        setView(context);
     }
+    @Override
+    public void setView(BaseView view) {
+     this.view=(SignUpView)view;
+    }
+
 
     @Override
     public void register() {
         view.showProgress();
         RegistrationFirebase.register(view.getEmail(), view.getPassword(), this, this);
-    }
-
-    @Override
-    public void setView(SignUpActivity view) {
-        this.view = view;
     }
 
     @Override
@@ -80,4 +81,5 @@ public class SignUpPresnterImpl implements SignUpPresnter, OnSuccessListener<Aut
         view.hideProgress();
         view.navigateToHome();
     }
+
 }

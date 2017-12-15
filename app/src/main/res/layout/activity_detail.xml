@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="256dp"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbartest"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbartest"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:elevation="7dp"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            <ImageView
+                android:id="@+id/product_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                app:layout_scrollFlags="scroll|enterAlways" />
+            />
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:orientation="vertical">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Denim Shirt"
+                    android:textSize="16dp"
+                    android:textColor="@color/gen_black"/>
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Rs. 1,979"
+                    android:textSize="20dp"
+                    android:textColor="@color/gen_black"
+                    />
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="FREE Delivery"
+                    android:textSize="12dp"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView android:id="@+id/text_ratings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/green_light"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    android:text="4.3 *"
+                    android:textSize="12dp"
+                    android:textColor="@color/gen_white"
+                    android:textStyle="bold"/>
+
+                <TextView android:id="@+id/text_ratings_reviews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="50 ratings \u0026 15 reviews"
+                    android:textSize="12dp"/>
+
+            </LinearLayout>
+            <View android:layout_width="match_parent"
+                android:layout_height="@dimen/view_width_small"
+                android:background="@color/grey_light"
+                android:layout_marginTop="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:weightSum="3">
+
+                <LinearLayout android:id="@+id/layout_action1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <ImageView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_share_black_18dp"/>
+                    <TextView android:id="@+id/text_action1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:text="Share"
+                        android:textSize="12dp"
+                        android:textColor="@color/gen_black"
+                        android:gravity="left"/>
+                </LinearLayout>
+
+                <View android:layout_width="@dimen/view_width_small"
+                    android:layout_height="match_parent"
+                    android:background="@color/grey_light"/>
+
+                <LinearLayout android:id="@+id/layout_action2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <ImageView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_filter_none_black_18dp"/>
+                    <TextView android:id="@+id/text_action2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:text="Similar"
+                        android:textSize="12dp"
+                        android:textColor="@color/gen_black"
+                        android:gravity="left"/>
+                </LinearLayout>
+
+                <View android:layout_width="@dimen/view_width_small"
+                    android:layout_height="match_parent"
+                    android:background="@color/grey_light"/>
+
+                <LinearLayout android:id="@+id/layout_action3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <ImageView android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_favorite_border_black_18dp"/>
+                    <TextView android:id="@+id/text_action3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="8dp"
+                        android:text="Wishlist"
+                        android:textSize="12dp"
+                        android:textColor="@color/gen_black"
+                        android:gravity="left"/>
+                </LinearLayout>
+            </LinearLayout>
+            <View android:layout_width="match_parent"
+                android:layout_height="@dimen/view_width_small"
+                android:background="@color/grey_light"
+                android:layout_marginTop="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/activity_vertical_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Details"
+                    android:textColor="@color/gen_black"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="\u2022 Regular fit, full sleeve"
+                    android:textColor="@color/gen_black"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Apolloniates undas, tanquam talis mortem Sunt guttuses transferre nobilis, placidus amicitiaes. The source has silence, but not everyone loves it.Music happens when you emerge life so spiritually that whatsoever you are diing is your harmony.
+Fluff two seaweeds, chicken, and green curry in a large frying pan over medium heat, cook for eleven minutes and garnish with some sausages."
+                    android:textColor="@color/gen_black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/gen_black"
+                    android:text="Apolloniates undas, tanquam talis mortem Sunt guttuses transferre nobilis, placidus amicitiaes. The source has silence, but not everyone loves it.Music happens when you emerge life so spiritually that whatsoever you are diing is your harmony.
+Fluff two seaweeds, chicken, and green curry in a large frying pan over medium heat, cook for eleven minutes and garnish with some sausages."
+
+                    android:textSize="20dp"  />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:elevation="30dp"
+            android:background="@color/gen_black">
+            <TextView android:id="@+id/add_to_cart_acton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/gen_white"
+                android:text="ADD TO CART"
+                android:textSize="14dp"
+                android:textColor="@color/gen_black"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView android:id="@+id/buy_now_action"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="BUY NOW"
+                android:textSize="14dp"
+                android:textColor="@color/gen_white"
+                android:textStyle="bold"
+                android:gravity="center"/>
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+</android.support.design.widget.CoordinatorLayout>
