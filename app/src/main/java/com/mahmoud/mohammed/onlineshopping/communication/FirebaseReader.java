@@ -5,6 +5,7 @@ import android.webkit.ValueCallback;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -43,7 +44,26 @@ public class FirebaseReader {
         });
 
     }
+  public static void getSearchResult(String keyWord,final Class<?> obClass, final ValueCallback<ArrayList<Object>> callback){
 
+      Query query = FireHelper.getRequiredPath(FireConstants.PRODUCTS_NODE
+              ,FireConstants.OFFERS_CHILD).orderByChild(FireConstants.PRODUCT_KEY).startAt(keyWord);
+      query.addListenerForSingleValueEvent(new ValueEventListener() {
+          @Override
+          public void onDataChange(DataSnapshot dataSnapshot) {
+              if (dataSnapshot.exists()) {
+                  callback.onReceiveValue(DataFetcher.getListFromSnapShot(obClass,dataSnapshot));
+              }
+
+          }
+
+          @Override
+          public void onCancelled(DatabaseError databaseError) {
+
+          }
+      });
+
+  }
 
     public static void getSnapShotSinglieListner(final ValueCallback<DataSnapshot> callback,String ... params){
 

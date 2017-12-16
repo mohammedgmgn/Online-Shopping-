@@ -9,19 +9,16 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.mahmoud.mohammed.onlineshopping.R;
 import com.mahmoud.mohammed.onlineshopping.authnication.login.view.activties.LoginActivty;
 import com.mahmoud.mohammed.onlineshopping.base.BaseActivity;
 import com.mahmoud.mohammed.onlineshopping.communication.SessionHelper;
-import com.mahmoud.mohammed.onlineshopping.ui.orders.view.fragments.MyOrdersFragment;
 import com.mahmoud.mohammed.onlineshopping.ui.categories.products.books.BooksFragment;
 import com.mahmoud.mohammed.onlineshopping.ui.categories.products.elctoronics.ElectoronicsFragment;
 import com.mahmoud.mohammed.onlineshopping.ui.categories.products.homeapplication.HomeApplicationsFragment;
@@ -32,6 +29,8 @@ import com.mahmoud.mohammed.onlineshopping.ui.home.component.DaggerHomeComponent
 import com.mahmoud.mohammed.onlineshopping.ui.home.component.HomeComponent;
 import com.mahmoud.mohammed.onlineshopping.ui.home.modules.HomeModule;
 import com.mahmoud.mohammed.onlineshopping.ui.home.presnter.HomePresnterImpl;
+import com.mahmoud.mohammed.onlineshopping.ui.orders.view.fragments.MyOrdersFragment;
+import com.mahmoud.mohammed.onlineshopping.ui.search.SearchActivity;
 import com.mahmoud.mohammed.onlineshopping.utils.notification.NotificationCountSetClass;
 
 import java.util.ArrayList;
@@ -55,7 +54,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         setContentView(R.layout.activity_home);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-     //   searchView =  findViewById(R.id.search_view);
+        //   searchView =  findViewById(R.id.search_view);
         homeComponent = DaggerHomeComponent.builder().homeModule(new HomeModule(this))
                 .build();
         homeComponent.injectHomeActivity(this);
@@ -70,8 +69,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     private void initUi() {
         presnter.setView(this);
         presnter.getMyCartListCount();
-        getProductNames();
-        //setDefaultFragment();
+        setDefaultFragment();
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -82,8 +80,8 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-       // searchView=findViewById(R.id.searchView);
-       // searchView.setQueryHint("Search View");
+        // searchView=findViewById(R.id.searchView);
+        // searchView.setQueryHint("Search View");
 /*
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
@@ -157,9 +155,6 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
 */
     }
 
-    private void getProductNames() {
-
-    }
 
     private void setDefaultFragment() {
         fragment = new OffersFragment();
@@ -187,20 +182,22 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        MenuItem item = menu.findItem(R.id.home_action_search);
-        //searchView = (MaterialSearchView) menu.findItem(R.id.home_action_search).getActionView();
-        //searchView.item
+        MenuItem item = menu.findItem(R.id.action_search);
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+             //   startActivity(new Intent(HomeActivity.this, SearchActivity.class));
+
+                return false;
+            }
+        });
 
         return true;
     }
 
 
-
-
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // Get the notifications MenuItem and
-        // its LayerDrawable (layer-list)
         MenuItem item = menu.findItem(R.id.action_cart);
 
         NotificationCountSetClass.setAddToCart(HomeActivity.this, item, notificationCountCart);
@@ -218,24 +215,9 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-    if(id==R.id.home_action_search){
-      //  searchView.openSearch();
-
-        //    searchView.setVisibility(View.VISIBLE);
-    }
-        //noinspection SimplifiableIfStatement
-        /*
-        if (id == R.id.action_search) {
-            startActivity(new Intent(MainActivity.this, SearchResultActivity.class));
-            return true;
-        }else if (id == R.id.action_cart) {
-
-            startActivity(new Intent(MainActivity.this, CartListActivity.class));
-            return true;
-        }else {
-            startActivity(new Intent(MainActivity.this, EmptyActivity.class));
-
-        }*/
+        if (id == R.id.action_text_search) {
+        //    startActivity(new Intent(this, SearchActivity.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -317,6 +299,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     public void showNoInternetMsg() {
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == MaterialSearchView.REQUEST_VOICE && resultCode == RESULT_OK) {
@@ -324,7 +307,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
             if (matches != null && matches.size() > 0) {
                 String searchWrd = matches.get(0);
                 if (!TextUtils.isEmpty(searchWrd)) {
-                   // searchView.setQuery(searchWrd, false);
+                    // searchView.setQuery(searchWrd, false);
                 }
             }
 
@@ -336,7 +319,7 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     protected void onPause() {
         super.onPause();
-       // searchView.clearSuggestions();
+        // searchView.clearSuggestions();
     }
 
     @Override
@@ -346,14 +329,14 @@ public class HomeActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     private void clearHistory() {
-   //     searchView.clearHistory();
+        //     searchView.clearHistory();
     }
 
     private void clearSuggestions() {
-       // searchView.clearSuggestions();
+        // searchView.clearSuggestions();
     }
 
     private void clearAll() {
-     //   searchView.clearAll();
+        //   searchView.clearAll();
     }
 }

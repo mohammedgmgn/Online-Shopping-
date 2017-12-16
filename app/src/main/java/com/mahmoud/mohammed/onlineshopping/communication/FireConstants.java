@@ -15,6 +15,7 @@ public class FireConstants {
     final public static String MY_CARTS = "MyCart";
     final public static String PRODUCT_ID = "ProductId";
     final public static String ORDER_NODE = "Orders";
+    final public static String PRODUCT_KEY = "productName";
 
 
 
